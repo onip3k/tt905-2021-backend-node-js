@@ -50,8 +50,8 @@ app.get('/movies/:id',
 
 app.post('/movies', 
     (req, res) => {
-        console.log(req.body.movie);
-        const movie = req.body.movie;
+        console.log(req.body.any);
+        const movie = req.body.any;
         movies.push(movie);
         res.send("Create one movie.")
     }
