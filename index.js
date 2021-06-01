@@ -11,63 +11,66 @@ app.listen(process.env.PORT || 3000);
 
 app.get('/', 
     function (req, res){    
-        res.send("Hello World");
+        res.send("Hello World!! This is a movie database!");
     }
 );
 
 app.get('/hello',
 function (req, res){    
-    res.send("Hello de Novo");
+    res.send("Hello again! Here we have the best movies in my opinion!");
     }
 )
 
-const mensagens = [
-    "Elziele da Rocha", "Lucas Canova dos Santos", 0 
+const movies = [
+    {title:"Seven Samurai", director:"Akira Kurosawa", year:"1954"},
+    {title:"Stalker", director:"Andrei Tarkovsky", year:"1979"},
+    {title:"Scandal", director:"Akira Kurosawa", year:"1950"},
+    {title:"Solaris", director:"Andrei Tarkovsky", year:"1972"}
 ];
 
-app.get('/mensagens',
+app.get('/movies',
     function(req, res){
-        // res.send(mensagens);
-        res.send(mensagens.filter(Boolean));
+        // res.send(movies);
+        res.send(movies.filter(Boolean));
     }
 );
 
-app.get('/mensagens/:id',
+app.get('/movies/:id',
     function(req, res){
         const id = req.params.id - 1;
-        const mensagem = mensagens[id];
+        const movie = movies[id];
 
-        if (!mensagem){
-            res.send("Mensagem não encontrada");
+        if (!movie){
+            res.send("Movie not found.");
         } else {
-            res.send(mensagem);
+            res.send(movie);
         }
     }
 )
 
-app.post('/mensagens', 
+app.post('/movies', 
     (req, res) => {
-        console.log(req.body.mensagem);
-        const mensagem = req.body.mensagem;
-        mensagens.push(mensagem);
-        res.send("criar uma mensagem.")
+        console.log(req.body.movie);
+        const movie = req.body.movie;
+        movies.push(movie);
+        res.send("Create one movie.")
     }
 );
 
-app.put('/mensagens/:id',
+app.put('/movies/:id',
     (req, res) => {
         const id = req.params.id - 1;
-        const mensagem = req.body.mensagem;
-        mensagens[id] = mensagem;        
-        res.send("Mensagem atualizada com sucesso.")
+        const movie = req.body.movie;
+        movies[id] = movie;        
+        res.send("Movie successfully updated.")
     }
 )
 
-app.delete('/mensagens/:id', 
+app.delete('/movies/:id', 
     (req, res) => {
         const id = req.params.id - 1;
-        delete mensagens[id];
+        delete movies[id];
 
-        res.send("Mensagem removida com sucesso");
+        res.send("Movie successfully removed.");
     }
 );
