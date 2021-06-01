@@ -53,8 +53,8 @@ app.post('/movies',
         console.log(req.body.title);
         console.log(req.body.director);
         console.log(req.body.year);
-        const movie = [req.body.title, req.body.director, req.body.year];
-        movies.push(title = movie[0], director = movie[1], year = movie[2]);
+        const movie = {title:req.body.title, director:req.body.director, year:req.body.year};
+        movies.push(movie);
         res.send("Create one movie.")
     }
 );
