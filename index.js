@@ -62,7 +62,7 @@ app.post('/movies',
 app.put('/movies/:id',
     (req, res) => {
         const id = req.params.id - 1;
-        const movie = req.body.movie;
+        const movie = {title:req.body.title, director:req.body.director, year:req.body.year};
         movies[id] = movie;        
         res.send("Movie successfully updated.")
     }
