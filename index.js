@@ -72,7 +72,7 @@ app.delete('/movies/:id',
     (req, res) => {
         const id = req.params.id - 1;
         //delete movies[id];
-        movies.slice(id, 1);
+        movies.splice(id, 1);
 
         res.send("Movie successfully removed.");
     }
