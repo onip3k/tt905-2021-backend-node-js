@@ -30,8 +30,8 @@ const movies = [
 
 app.get('/movies',
     function(req, res){
-        // res.send(movies);
-        res.send(movies.filter(Boolean));
+        res.send(movies);
+        //res.send(movies.filter(Boolean));
     }
 );
 
