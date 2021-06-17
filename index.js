@@ -30,8 +30,8 @@ const movies = [
 
 app.get('/movies',
     function(req, res){
-        //res.send(movies);
-        res.send(movies.filter(Boolean));
+        res.send(movies);
+        //res.send(movies.filter(Boolean));
     }
 );
 
@@ -71,8 +71,8 @@ app.put('/movies/:id',
 app.delete('/movies/:id', 
     (req, res) => {
         const id = req.params.id - 1;
-        delete movies[id];
-        //movies.splice(id, 1);
+        //delete movies[id];
+        movies.splice(id, 1);
 
         res.send("Movie successfully removed.");
     }
